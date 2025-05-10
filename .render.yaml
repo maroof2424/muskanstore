@@ -1,0 +1,6 @@
+services:
+  - type: web                         # You're deploying a web service
+    name: muskan-store                # Name of your Render service
+    env: python                       # Tells Render this is a Python project
+    buildCommand: pip install -r requirements.txt  # Installs all Python dependencies
+    startCommand: gunicorn muskanstore.wsgi        # Starts your Django app using Gunicorn
