@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2 class="text-center mb-4">Our Products</h2>
+
+<!-- Filter Form -->
+<form method="get" class="row mb-4">
+  <div class="col-md-4">
+    <input type="text" name="search" class="form-control" placeholder="Search products..." value="{{ search_query }}">
+  </div>
+  <div class="col-md-4">
+    <select name="category" class="form-select">
+      <option value="all" {% if selected_category == "all" %}selected{% endif %}>All Categories</option>
+      {% for value, label in categories %}
+        <option value="{{ value }}" {% if selected_category == value %}selected{% endif %}>{{ label }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-dark w-100">Filter</button>
+  </div>
+</form>
+
+<!-- Products Grid -->
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+  {% for product in products %}
+    <div class="col">
+      <div class="card h-100">
+        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description|truncatewords:20 }}</p>
+        </div>
+        <div class="card-footer">
+          <strong>PKR {{ product.price }}</strong>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p class="text-center">No products found.</p>
+  {% endfor %}
+</div>
+{% endblock %}

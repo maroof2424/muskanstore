@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5"><br><br>
+    <div class="card shadow rounded-4 p-4">
+        <h2 class="text-center mb-4">About Muskan Store</h2>
+        <p class="lead text-center">
+            Welcome to <strong>Muskan Store</strong> – your one-stop destination for stylish clothing, elegant jewellery, trendy shoes, and more.
+        </p>
+        <p>
+            Our mission is to deliver top-quality fashion and accessories at affordable prices. Whether you're looking for the latest trends or timeless classics, we carefully curate our collections to bring you the best products available.
+        </p>
+        <p>
+            We are committed to providing excellent customer service and a smooth shopping experience. Our team works hard to ensure that every product listed on our site meets our high standards of quality and style.
+        </p>
+        <p>
+            Thank you for choosing Muskan Store. We look forward to serving you!
+        </p>
+
+        <h4 class="mt-4">Contact Us</h4>
+        <p>If you have any questions or wish to make a purchase, feel free to contact us:</p>
+        <ul>
+            <li><strong>Phone:</strong> +92 301 0041290</li>
+            <li><strong>WhatsApp:</strong> <a href="https://wa.me/923010041290" target="_blank">+92 301 0041290</a></li>
+            <li><strong>Email:</strong> <a href="mailto:spinevirgin@gmail.com">spinevirgin@gmail.com</a></li>
+        </ul>
+        <p class="mt-3">* All products can be purchased via WhatsApp. Just reach out to us and we'll take care of the rest!</p>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'product_list' %}" class="btn btn-dark">Explore Products</a>
+        </div>
+    </div>
+</div><br><br><br>
+{% endblock %}
