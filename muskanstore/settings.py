@@ -10,7 +10,7 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', default='insecure-secret-for-dev')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Hosts
-ALLOWED_HOSTS = ['muskanonlinestore.onrender.com', 'muskanonlinestore.shop']
+ALLOWED_HOSTS = ['muskanstore.vercel.app', 'muskanonlinestore.shop']
 
 # Installed apps
 INSTALLED_APPS = [
