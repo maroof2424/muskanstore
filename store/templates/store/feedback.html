@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+  <h2 class="text-center mb-4">Product Feedback</h2>
+
+  <!-- Success/Error Messages -->
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <!-- Feedback Form -->
+  <form method="post" class="mb-5">
+    {% csrf_token %}
+    <div class="row mb-3">
+      <div class="col-md-6">
+        <label for="name" class="form-label">Your Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="col-md-6">
+        <label for="email" class="form-label">Your Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="product" class="form-label">Product</label>
+      <select class="form-select" id="product" name="product" required>
+        <option value="">Select a product</option>
+        {% for product in products %}
+          <option value="{{ product.id }}">{{ product.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Your Feedback</label>
+      <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="rating" class="form-label">Rating</label>
+      <select class="form-select" id="rating" name="rating" required>
+        <option value="1">1 - Poor</option>
+        <option value="2">2 - Fair</option>
+        <option value="3">3 - Good</option>
+        <option value="4">4 - Very Good</option>
+        <option value="5">5 - Excellent</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-dark w-100">Submit Feedback</button>
+  </form>
+
+  <!-- Feedback List -->
+  <h4 class="mb-4">All Feedback</h4>
+  {% for fb in feedbacks %}
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">{{ fb.product.name }} - {{ fb.rating }}/5</h5>
+        <p class="card-text">{{ fb.comment }}</p>
+        <p class="card-text"><small class="text-muted">By {{ fb.name|default:"Anonymous" }} on {{ fb.created_at|date:"F j, Y, g:i a" }}</small></p>
+
+        <!-- Delete Form -->
+        <form method="post" class="mt-2">
+          {% csrf_token %}
+          <input type="hidden" name="delete_id" value="{{ fb.id }}">
+          <div class="mb-2">
+            <label for="confirm_email_{{ fb.id }}">Enter your email to delete:</label>
+            <input type="email" name="confirm_email" id="confirm_email_{{ fb.id }}" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-danger btn-sm">Delete Feedback</button>
+        </form>
+      </div>
+    </div>
+  {% empty %}
+    <p>No feedback has been submitted yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

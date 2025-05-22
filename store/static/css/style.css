@@ -1,0 +1,101 @@
+/* General Body Styles */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    padding: 1rem;
+  }
+  
+  .navbar-nav .nav-item .nav-link {
+    font-size: 16px;
+    padding: 10px 15px;
+    color: #ffffff;
+  }
+  
+  .navbar-nav .nav-item .nav-link:hover {
+    background-color: #555555;
+    border-radius: 5px;
+  }
+  
+  .navbar-nav .nav-item .nav-link i {
+    margin-right: 5px;
+  }
+  
+  /* Main Content */
+  main {
+    margin-top: 20px;
+  }
+  
+  /* Footer Styling */
+  footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 15px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  footer a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Button styles for the navbar logout */
+  .btn-link.nav-link {
+    color: #ffffff !important;
+    text-decoration: none;
+  }
+  
+  .btn-link.nav-link:hover {
+    color: #dddddd !important;
+  }
+  
+  /* Adjustments for responsiveness */
+  @media (max-width: 768px) {
+    .navbar-nav .nav-item .nav-link {
+      font-size: 14px;
+    }
+  }
+  .carousel-item img {
+    width: 100vw;
+    height: 90vh;
+    object-fit: cover;
+  }
+
+  /* Remove unwanted space */
+
+
+  nav.navbar {
+    margin-bottom: 0 !important;
+  }
+
+  #storeCarousel {
+    width: 100vw;
+  }
+
+  .carousel-inner {
+    overflow: hidden;
+  }
+  .carousel-img {
+    width: 100vw;
+    height: auto;
+    object-fit: cover;
+  }
+  #logo{
+    border-radius: 50%;
+    height: 5%;
+    width: 5%;
+  }

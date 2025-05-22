@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 500px;"><br><br><br><br><br><br>
+    <div class="card shadow rounded-4">
+        <div class="card-body p-4">
+            <h2 class="text-center mb-4">Login</h2>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Username -->
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" required>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" required>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-dark w-100">Login</button>
+
+                <!-- Messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger mt-3 mb-0 p-2 text-center" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <!-- Register Link -->
+                <p class="text-center mt-3 mb-0">
+                    Don’t have an account? <a href="{% url 'register' %}">Register here</a>
+                </p>
+            </form>
+        </div>
+    </div><br><br><br><br><br><br><br><br><br><br>
+</div>
+{% endblock %}
